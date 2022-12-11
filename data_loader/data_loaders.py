@@ -1,6 +1,9 @@
 from torchvision import datasets, transforms
 from base import BaseDataLoader
 
+from torch.utils.data import Dataset
+
+
 
 class MnistDataLoader(BaseDataLoader):
     """
@@ -14,3 +17,13 @@ class MnistDataLoader(BaseDataLoader):
         self.data_dir = data_dir
         self.dataset = datasets.MNIST(self.data_dir, train=training, download=True, transform=trsfm)
         super().__init__(self.dataset, batch_size, shuffle, validation_split, num_workers)
+
+
+class GM_Dataset():
+    def __init__ (self, data_dir , subdivision = 5):
+        self.data_dir = data_dir
+        self.dbStruct_dir = self.data_dir + ''
+        
+
+class GM_DataLoader(BaseDataLoader):
+    def __init__(self, data_dir, batch_size, shuffle=True, validation_split=0.0, num_workers=1, training=True):
